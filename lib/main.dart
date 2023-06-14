@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:task_management/common/utils/constants.dart';
+import 'package:task_management/features/onboarding/pages/onboarding.dart';
 import 'package:task_management/features/todo/pages/homepage.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -20,9 +22,11 @@ class MyApp extends StatelessWidget {
       builder: (context, child) {
         return MaterialApp(
           theme: ThemeData(
+            scaffoldBackgroundColor: AppConst.kBkDark,
             primarySwatch: Colors.blue,
           ),
-          home: HomePage(),
+          themeMode: ThemeMode.dark,
+          home: const OnBoarding(),
         );
       }
     );
