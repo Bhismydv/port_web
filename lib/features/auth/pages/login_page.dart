@@ -8,6 +8,7 @@ import 'package:task_management/common/widgets/custom_text_field.dart';
 import 'package:task_management/common/widgets/height_spacer.dart';
 import 'package:task_management/common/widgets/reusable_text.dart';
 import 'package:country_picker/country_picker.dart';
+import 'package:task_management/features/auth/pages/otp_page.dart';
 
 class LoginPage extends ConsumerStatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -63,7 +64,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                             countryListTheme: CountryListThemeData(
                               backgroundColor: AppConst.kLight,
                               bottomSheetHeight: AppConst.kHeight*0.6,
-                              borderRadius: BorderRadius.only(topLeft: Radius.circular(12),
+                              borderRadius: const BorderRadius.only(topLeft: Radius.circular(12),
                               topRight: Radius.circular(12),)
                             ),
                             onSelect: (code){
@@ -79,9 +80,16 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                 ),
                const HeightSpacer(height: 20),
 
-                CustomOtnBtn(width: AppConst.kWidth*0.9, height: AppConst.kHeight*0.07,
-                    color2: AppConst.kLight,
-                    color: AppConst.kBkDark, text: "Send Code")
+                Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: CustomOtnBtn(
+                      onTap: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>const OtpPage()));
+                      },
+                      width: AppConst.kWidth*0.9, height: AppConst.kHeight*0.07,
+                      color2: AppConst.kLight,
+                      color: AppConst.kBkDark, text: "Send Code"),
+                )
               ],
             ),
           ),),
